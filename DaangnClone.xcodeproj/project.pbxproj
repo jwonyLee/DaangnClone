@@ -18,6 +18,7 @@
 		878BDBB326A6962500D6F5A1 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BDBB226A6962500D6F5A1 /* Styles.swift */; };
 		878BDBB626A696D500D6F5A1 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BDBB526A696D500D6F5A1 /* WriteViewController.swift */; };
 		878BDBB926A6B0B000D6F5A1 /* ThumbnailVerticalScrollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BDBB826A6B0B000D6F5A1 /* ThumbnailVerticalScrollTableViewCell.swift */; };
+		878BDBBD26A6C03800D6F5A1 /* InputTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BDBBC26A6C03800D6F5A1 /* InputTextTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		878BDBB226A6962500D6F5A1 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		878BDBB526A696D500D6F5A1 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		878BDBB826A6B0B000D6F5A1 /* ThumbnailVerticalScrollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailVerticalScrollTableViewCell.swift; sourceTree = "<group>"; };
+		878BDBBC26A6C03800D6F5A1 /* InputTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextTableViewCell.swift; sourceTree = "<group>"; };
 		FACAA817666B28BCDE27FE6E /* Pods-DaangnClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaangnClone.release.xcconfig"; path = "Target Support Files/Pods-DaangnClone/Pods-DaangnClone.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				878BDBB826A6B0B000D6F5A1 /* ThumbnailVerticalScrollTableViewCell.swift */,
+				878BDBBC26A6C03800D6F5A1 /* InputTextTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				878BDB9526A6634500D6F5A1 /* AppDelegate.swift in Sources */,
 				878BDBAE26A691B100D6F5A1 /* BaseViewController.swift in Sources */,
 				878BDBB026A6936D00D6F5A1 /* HomeViewController.swift in Sources */,
+				878BDBBD26A6C03800D6F5A1 /* InputTextTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
