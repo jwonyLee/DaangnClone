@@ -28,6 +28,7 @@ extension ViewController {
         chatViewController.tabBarItem = UITabBarItem(title: "채팅", image: UIImage(systemName: "bubble.left.and.bubble.right"), selectedImage: UIImage(systemName: "bubble.left.and.bubble.right.fill"))
         let profileViewController: BaseViewController = BaseViewController()
         profileViewController.tabBarItem = UITabBarItem(title: "나의 당근", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+        self.tabBar.tintColor = .systemOrange
         self.viewControllers = [homeViewController, townViewController, nearViewController, chatViewController, profileViewController]
     }
 }
