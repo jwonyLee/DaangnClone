@@ -10,6 +10,7 @@
 
 - RxSwift, 6.1.0
 - RxCocoa, 6.1.0
+- RxDataSources, 5.0.0
 - SwiftLint, 0.43.1
 - SnapKit, ~> 5.0.0
 - Then, 2.7.0
