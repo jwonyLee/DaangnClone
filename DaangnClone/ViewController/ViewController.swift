@@ -18,7 +18,7 @@ class ViewController: UITabBarController {
 // MARK: - Private
 extension ViewController {
     private func configureTabBar() {
-        let homeViewController: UINavigationController = UINavigationController(rootViewController: BaseViewController())
+        let homeViewController: UINavigationController = UINavigationController(rootViewController: HomeViewController())
         homeViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
         let townViewController: BaseViewController = BaseViewController()
         townViewController.tabBarItem = UITabBarItem(title: "동네생활", image: UIImage(systemName: "doc.plaintext"), selectedImage: UIImage(systemName: "doc.plaintext.fill"))
