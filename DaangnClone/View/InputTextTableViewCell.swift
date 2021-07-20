@@ -28,6 +28,10 @@ class InputTextTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+
+    func configurePlaceholder(with placeholder: String) {
+        textField.placeholder = placeholder
+    }
 }
 
 // MARK: - Private

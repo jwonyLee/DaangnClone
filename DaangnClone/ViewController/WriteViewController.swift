@@ -89,6 +89,7 @@ extension WriteViewController {
                     return cell
                 case .inputText:
                     let cell: InputTextTableViewCell = tableView.dequeueReusableCell(withIdentifier: InputTextTableViewCell.reuseIdentifier) as? InputTextTableViewCell ?? InputTextTableViewCell()
+                    cell.configurePlaceholder(with: "글 제목")
                     return cell
                 default:
                     return UITableViewCell()
