@@ -6,7 +6,7 @@
 //  Reference: https://github.com/kickstarter/ios-oss/blob/main/Library/Styles/BaseStyles.swift
 import UIKit
 
-enum Styles {
+public enum Styles {
     public static let cornerRadius: CGFloat = 15.0
 
     public static func grid(_ count: Int) -> CGFloat {

@@ -8,8 +8,13 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
+import RxCocoa
 
 class HomeViewController: BaseViewController {
+    // MARK: - Properties
+    private let disposeBag: DisposeBag = DisposeBag()
+
     // MARK: - View Properties
     private let floatingButton: UIButton = UIButton().then {
         $0.setImage(UIImage(systemName: "plus"), for: .normal)
@@ -27,6 +32,7 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
 
         configureFloatingButton()
+        bindInput()
     }
 
     override func viewWillLayoutSubviews() {
@@ -46,5 +52,16 @@ extension HomeViewController {
             $0.width.equalTo(Styles.grid(12))
             $0.height.equalTo(floatingButton.snp.width)
         }
+    }
+
+    private func bindInput() {
+        floatingButton.rx.tap
+            .bind(with: self) { strongSelf, _ in
+                let writeViewController: WriteViewController = WriteViewController()
+                writeViewController.modalTransitionStyle = .coverVertical
+                writeViewController.modalPresentationStyle = .fullScreen
+                strongSelf.present(writeViewController, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
 }
