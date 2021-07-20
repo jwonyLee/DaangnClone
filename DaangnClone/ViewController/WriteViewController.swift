@@ -14,10 +14,13 @@ import RxCocoa
 class WriteViewController: BaseViewController {
     // MARK: - Properties
     private let disposeBag: DisposeBag = DisposeBag()
+    private let tableCellType: Observable<[MultipleCellType]> = Observable.just([MultipleCellType.thumbnailVerticalScroll, MultipleCellType.inputText, MultipleCellType.category, MultipleCellType.price, MultipleCellType.contents])
 
     // MARK: - View Properties
     private let tableView: UITableView = UITableView(frame: .zero, style: .grouped).then {
         $0.register(UITableViewCell.self, forCellReuseIdentifier: "test")
+        $0.register(ThumbnailVerticalScrollTableViewCell.self, forCellReuseIdentifier: ThumbnailVerticalScrollTableViewCell.reuseIdentifier)
+        $0.register(InputTextTableViewCell.self, forCellReuseIdentifier: InputTextTableViewCell.reuseIdentifier)
         $0.backgroundColor = .systemBackground
         $0.sectionHeaderHeight = 0
         $0.sectionFooterHeight = 0
@@ -78,10 +81,28 @@ extension WriteViewController {
     }
 
     private func bindTableView() {
-        Observable.just(["scroll", "title", "category", "price", "contents"])
-            .bind(to: tableView.rx.items(cellIdentifier: "test", cellType: UITableViewCell.self)) { row, element, cell in
-                cell.textLabel?.text = element
+        tableCellType
+            .bind(to: tableView.rx.items) { tableView, _, cellType in
+                switch cellType {
+                case .thumbnailVerticalScroll:
+                    let cell: ThumbnailVerticalScrollTableViewCell = tableView.dequeueReusableCell(withIdentifier: ThumbnailVerticalScrollTableViewCell.reuseIdentifier) as? ThumbnailVerticalScrollTableViewCell ?? ThumbnailVerticalScrollTableViewCell()
+                    return cell
+                case .inputText:
+                    let cell: InputTextTableViewCell = tableView.dequeueReusableCell(withIdentifier: InputTextTableViewCell.reuseIdentifier) as? InputTextTableViewCell ?? InputTextTableViewCell()
+                    return cell
+                default:
+                    return UITableViewCell()
+                }
             }
             .disposed(by: disposeBag)
     }
+}
+
+// MARK: - Multiple Cell Type
+enum MultipleCellType {
+    case thumbnailVerticalScroll
+    case inputText
+    case category
+    case price
+    case contents
 }
