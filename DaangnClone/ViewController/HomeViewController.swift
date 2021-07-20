@@ -57,8 +57,7 @@ extension HomeViewController {
     private func bindInput() {
         floatingButton.rx.tap
             .bind(with: self) { strongSelf, _ in
-                let writeViewController: WriteViewController = WriteViewController()
-                writeViewController.modalTransitionStyle = .coverVertical
+                let writeViewController: UINavigationController = UINavigationController(rootViewController: WriteViewController())
                 writeViewController.modalPresentationStyle = .fullScreen
                 strongSelf.present(writeViewController, animated: true)
             }
