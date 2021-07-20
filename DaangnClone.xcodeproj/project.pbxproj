@@ -15,6 +15,7 @@
 		878BDBAA26A6878900D6F5A1 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 878BDBA926A6878900D6F5A1 /* .swiftlint.yml */; };
 		878BDBAE26A691B100D6F5A1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BDBAD26A691B100D6F5A1 /* BaseViewController.swift */; };
 		878BDBB026A6936D00D6F5A1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BDBAF26A6936D00D6F5A1 /* HomeViewController.swift */; };
+		878BDBB326A6962500D6F5A1 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BDBB226A6962500D6F5A1 /* Styles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		878BDBA926A6878900D6F5A1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		878BDBAD26A691B100D6F5A1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		878BDBAF26A6936D00D6F5A1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		878BDBB226A6962500D6F5A1 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		FACAA817666B28BCDE27FE6E /* Pods-DaangnClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaangnClone.release.xcconfig"; path = "Target Support Files/Pods-DaangnClone/Pods-DaangnClone.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +89,7 @@
 				878BDB9F26A6634700D6F5A1 /* LaunchScreen.storyboard */,
 				878BDBAB26A6887E00D6F5A1 /* SupportingFiles */,
 				878BDBAC26A68BCE00D6F5A1 /* ViewController */,
+				878BDBB126A695E400D6F5A1 /* Utilities */,
 			);
 			path = DaangnClone;
 			sourceTree = "<group>";
@@ -108,6 +111,14 @@
 				878BDBAF26A6936D00D6F5A1 /* HomeViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		878BDBB126A695E400D6F5A1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				878BDBB226A6962500D6F5A1 /* Styles.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				878BDB9926A6634500D6F5A1 /* ViewController.swift in Sources */,
+				878BDBB326A6962500D6F5A1 /* Styles.swift in Sources */,
 				878BDB9526A6634500D6F5A1 /* AppDelegate.swift in Sources */,
 				878BDBAE26A691B100D6F5A1 /* BaseViewController.swift in Sources */,
 				878BDBB026A6936D00D6F5A1 /* HomeViewController.swift in Sources */,

@@ -41,9 +41,9 @@ extension HomeViewController {
         view.addSubview(floatingButton)
 
         floatingButton.snp.makeConstraints {
-            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailingMargin).offset(-32)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin).offset(-32)
-            $0.width.equalTo(48)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailingMargin).offset(Styles.grid(-8))
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin).offset(Styles.grid(-8))
+            $0.width.equalTo(Styles.grid(12))
             $0.height.equalTo(floatingButton.snp.width)
         }
     }
