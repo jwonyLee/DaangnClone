@@ -16,8 +16,7 @@
 
 ## 요구사항 분석
 
-<div style="clear: both">
-<img src="images/Write-View.png" width="350" align="left" />
+<img src="images/Write-View.png" width="350" />
 
 ### 요구사항
 1. 사진 선택 화면으로 이동한다.
@@ -36,11 +35,7 @@
 8. 동네 범위 선택 화면으로 이동한다.
 9. 자주 사용하는 문구 모달을 띄운다.
 
-</div>
-
-<div style="clear: both">
-
-<img src="images/Choose-Image-View.png" width="350" align="left" />
+<img src="images/Choose-Image-View.png" width="350" />
 
 ### 요구사항
 
@@ -48,27 +43,18 @@
 2. 선택한 사진의 개수를 표시한다.
     - 선택한 사진을 글쓰기 작성 화면으로 넘겨준다.
 
-</div>
-
-<div style="clear: both">
-<img src="images/Choose-Category-View.png" width="350" align="left" />
+<img src="images/Choose-Category-View.png" width="350" />
 
 ### 요구사항
 
 1. 카테고리 목록을 표시한다.
 
-</div>
-
-<div style="clear: both">
-<img src="images/Show-Keyboard-View.png" width="350" align="left" />
+<img src="images/Show-Keyboard-View.png" width="350" />
 
 ### 요구사항
 
 1. 키보드가 올라왔을 때 키보드를 숨기는 버튼을 표시한다.
 
-</div>
-
-<div style="clear: both">
 <img src="images/Choose-Town-Range-View.png" />
 
 ### 요구사항
@@ -77,10 +63,7 @@
 2. 슬라이더를 이용해 동네 범위를 선택한다.
 3. 2에서 조절한 범위에 따라 이미지를 변경한다.
 
-</div>
-
-<div style="clear: both">
-<img src="images/Frequently-Used-Phrases-Modal-View.png" width="350" align="left" />
+<img src="images/Frequently-Used-Phrases-Modal-View.png" width="350" />
 
 ### 요구사항
 
@@ -89,5 +72,3 @@
 3. 자주쓰는 문구를 입력 받는다.
 4. 텍스트가 없으면 비활성화한다.
 5. 선택하면 현재 문구를 삭제한다.
-
-</div>
