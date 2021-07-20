@@ -18,7 +18,8 @@ class WriteViewController: BaseViewController {
 
     // MARK: - View Properties
     private let tableView: UITableView = UITableView(frame: .zero, style: .grouped).then {
-        $0.register(UITableViewCell.self, forCellReuseIdentifier: "test")
+        // TODO: remove constants
+        $0.register(UITableViewCell.self, forCellReuseIdentifier: "categoryReuseIdentifier")
         $0.register(ThumbnailVerticalScrollTableViewCell.self, forCellReuseIdentifier: ThumbnailVerticalScrollTableViewCell.reuseIdentifier)
         $0.register(InputTextTableViewCell.self, forCellReuseIdentifier: InputTextTableViewCell.reuseIdentifier)
         $0.backgroundColor = .systemBackground
@@ -90,6 +91,11 @@ extension WriteViewController {
                 case .inputText:
                     let cell: InputTextTableViewCell = tableView.dequeueReusableCell(withIdentifier: InputTextTableViewCell.reuseIdentifier) as? InputTextTableViewCell ?? InputTextTableViewCell()
                     cell.configurePlaceholder(with: "글 제목")
+                    return cell
+                case .category:
+                    let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "categoryReuseIdentifier") ?? UITableViewCell()
+                    cell.textLabel?.text = "카테고리 선택"
+                    cell.accessoryType = .disclosureIndicator
                     return cell
                 default:
                     return UITableViewCell()
