@@ -17,6 +17,7 @@
 		878BDBB026A6936D00D6F5A1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BDBAF26A6936D00D6F5A1 /* HomeViewController.swift */; };
 		878BDBB326A6962500D6F5A1 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BDBB226A6962500D6F5A1 /* Styles.swift */; };
 		878BDBB626A696D500D6F5A1 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BDBB526A696D500D6F5A1 /* WriteViewController.swift */; };
+		878BDBB926A6B0B000D6F5A1 /* ThumbnailVerticalScrollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BDBB826A6B0B000D6F5A1 /* ThumbnailVerticalScrollTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		878BDBAF26A6936D00D6F5A1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		878BDBB226A6962500D6F5A1 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		878BDBB526A696D500D6F5A1 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
+		878BDBB826A6B0B000D6F5A1 /* ThumbnailVerticalScrollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailVerticalScrollTableViewCell.swift; sourceTree = "<group>"; };
 		FACAA817666B28BCDE27FE6E /* Pods-DaangnClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaangnClone.release.xcconfig"; path = "Target Support Files/Pods-DaangnClone/Pods-DaangnClone.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,7 @@
 				878BDBA226A6634700D6F5A1 /* Info.plist */,
 				878BDB9F26A6634700D6F5A1 /* LaunchScreen.storyboard */,
 				878BDBAB26A6887E00D6F5A1 /* SupportingFiles */,
+				878BDBB726A6B08A00D6F5A1 /* View */,
 				878BDBAC26A68BCE00D6F5A1 /* ViewController */,
 				878BDBB126A695E400D6F5A1 /* Utilities */,
 			);
@@ -122,6 +125,14 @@
 				878BDBB226A6962500D6F5A1 /* Styles.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		878BDBB726A6B08A00D6F5A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				878BDBB826A6B0B000D6F5A1 /* ThumbnailVerticalScrollTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				878BDBB926A6B0B000D6F5A1 /* ThumbnailVerticalScrollTableViewCell.swift in Sources */,
 				878BDBB626A696D500D6F5A1 /* WriteViewController.swift in Sources */,
 				878BDB9926A6634500D6F5A1 /* ViewController.swift in Sources */,
 				878BDBB326A6962500D6F5A1 /* Styles.swift in Sources */,
