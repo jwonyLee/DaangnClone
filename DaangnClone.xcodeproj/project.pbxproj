@@ -13,6 +13,7 @@
 		878BDB9E26A6634700D6F5A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 878BDB9D26A6634700D6F5A1 /* Assets.xcassets */; };
 		878BDBA126A6634700D6F5A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 878BDB9F26A6634700D6F5A1 /* LaunchScreen.storyboard */; };
 		878BDBAA26A6878900D6F5A1 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 878BDBA926A6878900D6F5A1 /* .swiftlint.yml */; };
+		878BDBAE26A691B100D6F5A1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BDBAD26A691B100D6F5A1 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		878BDBA026A6634700D6F5A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		878BDBA226A6634700D6F5A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		878BDBA926A6878900D6F5A1 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		878BDBAD26A691B100D6F5A1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FACAA817666B28BCDE27FE6E /* Pods-DaangnClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaangnClone.release.xcconfig"; path = "Target Support Files/Pods-DaangnClone/Pods-DaangnClone.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,7 +84,7 @@
 				878BDBA226A6634700D6F5A1 /* Info.plist */,
 				878BDB9F26A6634700D6F5A1 /* LaunchScreen.storyboard */,
 				878BDBAB26A6887E00D6F5A1 /* SupportingFiles */,
-				878BDB9826A6634500D6F5A1 /* ViewController.swift */,
+				878BDBAC26A68BCE00D6F5A1 /* ViewController */,
 			);
 			path = DaangnClone;
 			sourceTree = "<group>";
@@ -94,6 +96,15 @@
 				878BDB9D26A6634700D6F5A1 /* Assets.xcassets */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		878BDBAC26A68BCE00D6F5A1 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				878BDB9826A6634500D6F5A1 /* ViewController.swift */,
+				878BDBAD26A691B100D6F5A1 /* BaseViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +242,7 @@
 			files = (
 				878BDB9926A6634500D6F5A1 /* ViewController.swift in Sources */,
 				878BDB9526A6634500D6F5A1 /* AppDelegate.swift in Sources */,
+				878BDBAE26A691B100D6F5A1 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
