@@ -8,12 +8,15 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
+import RxCocoa
 
 class PriceTableViewCell: UITableViewCell {
     // MARK: - Properties
     static var reuseIdentifier: String {
         String(describing: Self.self)
     }
+    private let disposeBag: DisposeBag = DisposeBag()
 
     // MARK: - View Properties
     private let krwLabel: UILabel = UILabel().then {
@@ -34,6 +37,7 @@ class PriceTableViewCell: UITableViewCell {
         $0.setTitleColor(.label, for: .selected)
         $0.tintColor = .tertiaryLabel
         $0.isEnabled = false
+        $0.isSelected = false
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -43,6 +47,7 @@ class PriceTableViewCell: UITableViewCell {
         configureViews()
         configurePriceTextField()
         configureSuggestionButton()
+        bindPriceInput()
     }
 
     required init?(coder: NSCoder) {
@@ -74,5 +79,30 @@ extension PriceTableViewCell {
             $0.trailing.equalToSuperview().offset(Styles.grid(-8))
             $0.bottom.equalToSuperview().offset(Styles.grid(-4))
         }
+    }
+
+    private func bindPriceInput() {
+        priceTextField.rx.text.orEmpty
+            .map { !$0.isEmpty }
+            .subscribe(onNext: { [weak self] isEmpty in
+                let krw: UILabel = self?.priceTextField.leftView as? UILabel ?? UILabel()
+                krw.textColor = isEmpty ? .label : .tertiaryLabel
+            })
+            .disposed(by: disposeBag)
+
+        priceTextField.rx.text.orEmpty
+            .map { !$0.isEmpty }
+            .subscribe(onNext: { [weak self] isEmpty in
+                self?.suggestionButton.isEnabled = isEmpty
+                self?.suggestionButton.tintColor = isEmpty ? .label : .tertiaryLabel
+                self?.suggestionButton.setTitleColor(isEmpty ? .label : .tertiaryLabel, for: .normal)
+            })
+            .disposed(by: disposeBag)
+
+        suggestionButton.rx.tap
+            .bind(with: self) { strongSelf, _ in
+                strongSelf.suggestionButton.isSelected.toggle()
+            }
+            .disposed(by: disposeBag)
     }
 }
