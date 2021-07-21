@@ -19,6 +19,7 @@
 		878BDBB626A696D500D6F5A1 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BDBB526A696D500D6F5A1 /* WriteViewController.swift */; };
 		878BDBB926A6B0B000D6F5A1 /* ThumbnailVerticalScrollTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BDBB826A6B0B000D6F5A1 /* ThumbnailVerticalScrollTableViewCell.swift */; };
 		878BDBBD26A6C03800D6F5A1 /* InputTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BDBBC26A6C03800D6F5A1 /* InputTextTableViewCell.swift */; };
+		878BDBBF26A6E57600D6F5A1 /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BDBBE26A6E57600D6F5A1 /* PriceTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		878BDBB526A696D500D6F5A1 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		878BDBB826A6B0B000D6F5A1 /* ThumbnailVerticalScrollTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailVerticalScrollTableViewCell.swift; sourceTree = "<group>"; };
 		878BDBBC26A6C03800D6F5A1 /* InputTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextTableViewCell.swift; sourceTree = "<group>"; };
+		878BDBBE26A6E57600D6F5A1 /* PriceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTableViewCell.swift; sourceTree = "<group>"; };
 		FACAA817666B28BCDE27FE6E /* Pods-DaangnClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DaangnClone.release.xcconfig"; path = "Target Support Files/Pods-DaangnClone/Pods-DaangnClone.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,7 @@
 			children = (
 				878BDBB826A6B0B000D6F5A1 /* ThumbnailVerticalScrollTableViewCell.swift */,
 				878BDBBC26A6C03800D6F5A1 /* InputTextTableViewCell.swift */,
+				878BDBBE26A6E57600D6F5A1 /* PriceTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			files = (
 				878BDBB926A6B0B000D6F5A1 /* ThumbnailVerticalScrollTableViewCell.swift in Sources */,
 				878BDBB626A696D500D6F5A1 /* WriteViewController.swift in Sources */,
+				878BDBBF26A6E57600D6F5A1 /* PriceTableViewCell.swift in Sources */,
 				878BDB9926A6634500D6F5A1 /* ViewController.swift in Sources */,
 				878BDBB326A6962500D6F5A1 /* Styles.swift in Sources */,
 				878BDB9526A6634500D6F5A1 /* AppDelegate.swift in Sources */,

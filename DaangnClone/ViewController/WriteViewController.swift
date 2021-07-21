@@ -22,6 +22,7 @@ class WriteViewController: BaseViewController {
         $0.register(UITableViewCell.self, forCellReuseIdentifier: "categoryReuseIdentifier")
         $0.register(ThumbnailVerticalScrollTableViewCell.self, forCellReuseIdentifier: ThumbnailVerticalScrollTableViewCell.reuseIdentifier)
         $0.register(InputTextTableViewCell.self, forCellReuseIdentifier: InputTextTableViewCell.reuseIdentifier)
+        $0.register(PriceTableViewCell.self, forCellReuseIdentifier: PriceTableViewCell.reuseIdentifier)
         $0.backgroundColor = .systemBackground
         $0.sectionHeaderHeight = 0
         $0.sectionFooterHeight = 0
@@ -96,6 +97,9 @@ extension WriteViewController {
                     let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "categoryReuseIdentifier") ?? UITableViewCell()
                     cell.textLabel?.text = "카테고리 선택"
                     cell.accessoryType = .disclosureIndicator
+                    return cell
+                case .price:
+                    let cell: PriceTableViewCell = tableView.dequeueReusableCell(withIdentifier: PriceTableViewCell.reuseIdentifier) as? PriceTableViewCell ?? PriceTableViewCell()
                     return cell
                 default:
                     return UITableViewCell()
