@@ -14,20 +14,26 @@ import RxCocoa
 class WriteViewController: BaseViewController {
     // MARK: - Properties
     private let disposeBag: DisposeBag = DisposeBag()
-    private let tableCellType: Observable<[MultipleCellType]> = Observable.just([MultipleCellType.thumbnailVerticalScroll, MultipleCellType.inputText, MultipleCellType.category, MultipleCellType.price, MultipleCellType.contents])
+    private let tableCellType: Observable<[MultipleCellType]> = Observable.just([.thumbnailVerticalScroll, .inputText, .category, .price])
 
     // MARK: - View Properties
     private let tableView: UITableView = UITableView(frame: .zero, style: .grouped).then {
-        // TODO: remove constants
-        $0.register(UITableViewCell.self, forCellReuseIdentifier: "categoryReuseIdentifier")
         $0.register(ThumbnailVerticalScrollTableViewCell.self, forCellReuseIdentifier: ThumbnailVerticalScrollTableViewCell.reuseIdentifier)
         $0.register(InputTextTableViewCell.self, forCellReuseIdentifier: InputTextTableViewCell.reuseIdentifier)
         $0.register(PriceTableViewCell.self, forCellReuseIdentifier: PriceTableViewCell.reuseIdentifier)
         $0.backgroundColor = .systemBackground
         $0.sectionHeaderHeight = 0
-        $0.sectionFooterHeight = 0
         $0.tableHeaderView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 0, height: CGFloat.leastNormalMagnitude)))
-        $0.tableFooterView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 0, height: CGFloat.leastNormalMagnitude)))
+
+    }
+
+    private let contentsTextView: UITextView = UITextView().then {
+        $0.isEditable = true
+        $0.text = """
+            당근동에 올릴 게시글 내용을 작성해주세요.(가품 및 판매 금지품목은 게시가 제한될 수 있어요.)
+            """
+        $0.textColor = .tertiaryLabel
+        $0.font = UIFont.preferredFont(forTextStyle: .body)
     }
 
     override func viewDidLoad() {
@@ -73,6 +79,9 @@ extension WriteViewController {
     }
 
     private func configureTableView() {
+        tableView.delegate = self
+        contentsTextView.delegate = self
+
         view.addSubview(tableView)
         tableView.snp.makeConstraints {
             $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leadingMargin)
@@ -101,8 +110,6 @@ extension WriteViewController {
                 case .price:
                     let cell: PriceTableViewCell = tableView.dequeueReusableCell(withIdentifier: PriceTableViewCell.reuseIdentifier) as? PriceTableViewCell ?? PriceTableViewCell()
                     return cell
-                default:
-                    return UITableViewCell()
                 }
             }
             .disposed(by: disposeBag)
@@ -115,5 +122,32 @@ enum MultipleCellType {
     case inputText
     case category
     case price
-    case contents
+}
+
+// MARK: - TableView Delegate
+extension WriteViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView,
+                   heightForFooterInSection section: Int) -> CGFloat {
+        tableView.frame.height - tableView.contentSize.height
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        contentsTextView
+    }
+}
+
+extension WriteViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == .tertiaryLabel {
+            textView.text = nil
+            textView.textColor = .label
+        }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "당근동에 올릴 게시글 내용을 작성해주세요.(가품 및 판매 금지품목은 게시가 제한될 수 있어요.)"
+            textView.textColor = .tertiaryLabel
+        }
+    }
 }
