@@ -63,6 +63,7 @@ extension PriceTableViewCell {
     }
 
     private func configurePriceTextField() {
+        priceTextField.delegate = self
         priceTextField.leftView = krwLabel
 
         priceTextField.snp.makeConstraints {
@@ -106,3 +107,35 @@ extension PriceTableViewCell {
             .disposed(by: disposeBag)
     }
 }
+
+// MARK: - TextField Delegate
+extension PriceTableViewCell: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let formatter: NumberFormatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 0
+
+        let text: String = textField.text ?? ""
+        let newString: String = (text as NSString).replacingCharacters(in: range, with: string)
+        let numberWithoutCommas: String = newString.replacingOccurrences(of: ",", with: "")
+
+        guard var number = formatter.number(from: numberWithoutCommas) else {
+            textField.text = nil
+            textField.sendActions(for: .valueChanged)
+            return false
+        }
+
+        if Int(truncating: number) > 99_999_999 {
+            number = NSNumber(value: 99_999_999)
+        }
+
+        var formattedString: String? = formatter.string(from: number)
+        if string == "." && range.location == textField.text?.count {
+            formattedString = formattedString?.appending(".")
+        }
+        textField.text = formattedString
+
+        textField.sendActions(for: .valueChanged)
+        return false
+    }
+} // source: https://stackoverflow.com/questions/27308595/how-do-you-dynamically-format-a-number-to-have-commas-in-a-uitextfield-entry/50798618
