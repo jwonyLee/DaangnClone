@@ -14,11 +14,13 @@ class ThumbnailVerticalScrollTableViewCell: UITableViewCell {
     static var reuseIdentifier: String {
         String(describing: Self.self)
     }
+    private var selectImages: [UIImage] = []
 
     // MARK: - View Properties
-    private let cameraButton: UIButton = UIButton().then {
+    let cameraButton: UIButton = UIButton().then {
         $0.setImage(UIImage(systemName: "camera"), for: .normal)
-        $0.backgroundColor = .gray
+        $0.tintColor = .secondaryLabel
+        $0.backgroundColor = .systemBackground
     }
 
     private lazy var thumbnailCollectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
@@ -37,6 +39,11 @@ class ThumbnailVerticalScrollTableViewCell: UITableViewCell {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+
+    func appendImage(with image: UIImage) {
+        selectImages.append(image)
+        thumbnailCollectionView.reloadData()
     }
 }
 
@@ -80,7 +87,7 @@ extension ThumbnailVerticalScrollTableViewCell {
 // MARK: - CollectionView DataSource
 extension ThumbnailVerticalScrollTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        selectImages.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -88,7 +95,7 @@ extension ThumbnailVerticalScrollTableViewCell: UICollectionViewDataSource {
             return ThumbnailCollectionViewCell()
         }
 
-        cell.backgroundColor = .blue
+        cell.thumbnailImageView.image = selectImages[indexPath.row]
 
         return cell
     }

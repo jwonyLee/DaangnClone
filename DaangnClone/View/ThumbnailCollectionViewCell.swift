@@ -14,7 +14,7 @@ class ThumbnailCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: - View Properties
-    private let thumbnailImageView: UIImageView = UIImageView()
+    let thumbnailImageView: UIImageView = UIImageView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -10,11 +10,13 @@ import SnapKit
 import Then
 import RxSwift
 import RxCocoa
+import Photos
 
 class WriteViewController: BaseViewController {
     // MARK: - Properties
     private let disposeBag: DisposeBag = DisposeBag()
     private let tableCellType: Observable<[MultipleCellType]> = Observable.just([.thumbnailVerticalScroll, .inputText, .category, .price])
+    private var fetchResult: PHFetchResult<PHAsset>?
 
     // MARK: - View Properties
     private let tableView: UITableView = UITableView(frame: .zero, style: .grouped).then {
@@ -24,7 +26,6 @@ class WriteViewController: BaseViewController {
         $0.backgroundColor = .systemBackground
         $0.sectionHeaderHeight = 0
         $0.tableHeaderView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 0, height: CGFloat.leastNormalMagnitude)))
-
     }
 
     private let contentsTextView: UITextView = UITextView().then {
@@ -93,10 +94,24 @@ extension WriteViewController {
 
     private func bindTableView() {
         tableCellType
-            .bind(to: tableView.rx.items) { tableView, _, cellType in
+            .bind(to: tableView.rx.items) { [weak self] tableView, _, cellType in
+                guard let self = self else {
+                    fatalError("")
+                }
                 switch cellType {
                 case .thumbnailVerticalScroll:
                     let cell: ThumbnailVerticalScrollTableViewCell = tableView.dequeueReusableCell(withIdentifier: ThumbnailVerticalScrollTableViewCell.reuseIdentifier) as? ThumbnailVerticalScrollTableViewCell ?? ThumbnailVerticalScrollTableViewCell()
+
+                    cell.cameraButton.rx.tap
+                        .bind {
+                            self.requestPhotosAccess {
+                                self.fetchPhotos { image in
+                                    cell.appendImage(with: image)
+                                }
+                            }
+                        }
+                        .disposed(by: self.disposeBag)
+
                     return cell
                 case .inputText:
                     let cell: InputTextTableViewCell = tableView.dequeueReusableCell(withIdentifier: InputTextTableViewCell.reuseIdentifier) as? InputTextTableViewCell ?? InputTextTableViewCell()
@@ -114,6 +129,37 @@ extension WriteViewController {
             }
             .disposed(by: disposeBag)
     }
+
+    private func requestPhotosAccess(completion: @escaping () -> Void) {
+        PHPhotoLibrary.requestAuthorization { status in
+            switch status {
+            case .authorized:
+                completion()
+            case .limited:
+                completion()
+            default:
+                // TODO: 권한 허용하지 않으면 무조건 fatalError 발생, 이게 올바른 처리는 아니지만 임시로..
+                fatalError("is not allowed")
+            }
+        }
+    }
+
+    func fetchPhotos(completion: @escaping(UIImage) -> Void) {
+        let requestOptions: PHImageRequestOptions = PHImageRequestOptions()
+        requestOptions.isSynchronous = true
+
+        let fetchOptions: PHFetchOptions = PHFetchOptions()
+        self.fetchResult = PHAsset.fetchAssets(with: fetchOptions)
+
+        self.fetchResult?.enumerateObjects({ asset, _, _ in
+            PHImageManager().requestImage(for: asset, targetSize: CGSize(width: 44, height: 44), contentMode: .aspectFill, options: requestOptions) { image, info in
+                guard let image = image else { return }
+                DispatchQueue.main.async {
+                    completion(image)
+                }
+            }
+        })
+    }
 }
 
 // MARK: - Multiple Cell Type
@@ -124,7 +170,7 @@ enum MultipleCellType {
     case price
 }
 
-// MARK: - TableView Delegate
+// MARK: - Delegate
 extension WriteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    heightForFooterInSection section: Int) -> CGFloat {
