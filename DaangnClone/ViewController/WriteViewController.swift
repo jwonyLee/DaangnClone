@@ -37,6 +37,8 @@ class WriteViewController: BaseViewController {
         $0.font = UIFont.preferredFont(forTextStyle: .body)
     }
 
+    private let toolbar: UIToolbar = UIToolbar()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,6 +56,8 @@ extension WriteViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancleButtonTapped))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: nil)
+        self.navigationItem.leftBarButtonItem?.tintColor = .systemOrange
+        self.navigationItem.rightBarButtonItem?.tintColor = .systemOrange
     }
 
     @objc
@@ -62,7 +66,6 @@ extension WriteViewController {
     }
 
     private func configureToolbar() {
-        let toolbar: UIToolbar = UIToolbar(frame: CGRect(origin: .zero, size: CGSize(width: view.frame.width, height: Styles.grid(11))))
         toolbar.sizeToFit()
         toolbar.tintColor = .label
         view.addSubview(toolbar)
@@ -88,7 +91,7 @@ extension WriteViewController {
             $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leadingMargin)
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailingMargin)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            $0.bottom.equalTo(toolbar.snp.topMargin)
         }
     }
 
