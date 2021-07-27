@@ -45,6 +45,7 @@
   - ~ iOS 14
     - `NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_ :)), name: UIResponder.keyboardWillShowNotification, object: nil)`로 알림을 받아서 설정해야 한다. 
     - `toolbar`의 `bottomConstraint.offset(-keyboardFrame.height)`를 업데이트 하는 식으로 해결했습니다.
+- 툴바에서 키보드를 내리는 기능을 구현했습니다.
 
 ## 요구사항 분석
 
