@@ -34,7 +34,7 @@
 ## 아쉬웠던 점
 
 - 다시 만든다면 `TableView`를 이용하지 않고, `StackView`로 구성할 거 같습니다.
-- `WriteViewController`가 너무 많은 일을 하고 있습니다. `RxSwift`를 사용했지만, 제대로 이점을 살리지 못했습니다. 계속 진행한다면, `RxSwift`를 걷어내거나, 로직을 `ViewModel`로 분리하려 합니다.
+- 일부 `RxSwift`를 사용했지만, 제대로 이점을 살리지 못했습니다. 계속 진행한다면 `RxSwift`를 걷어내거나, 로직을 `ViewModel`로 분리하려 합니다. (requestAccess, fetchPhotos 등)
 - 키보드가 올라올 때, 툴 바가 가려지는 문제를 해결하지 못했습니다. 
 - 진행 속도가 더뎌서 요구사항 분석과 달리 전부 구현하지 못했습니다.
 
