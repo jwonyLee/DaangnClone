@@ -121,7 +121,6 @@ extension WriteViewController {
         toolbar.snp.makeConstraints {
             $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leadingMargin)
             $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailingMargin)
-//            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin)
             self.toolbarBottomConstraint = $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin).constraint
         }
 
