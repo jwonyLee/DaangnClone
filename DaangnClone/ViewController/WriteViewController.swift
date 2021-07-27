@@ -38,6 +38,7 @@ class WriteViewController: BaseViewController {
     }
 
     private let toolbar: UIToolbar = UIToolbar()
+    private var toolbarBottomConstraint: Constraint?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,54 @@ class WriteViewController: BaseViewController {
         configureToolbar()
         configureTableView()
         bindTableView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_ :)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_ :)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc
+    private func keyboardWillShow(_ noti: Notification) {
+        guard let keyboardFrame: CGRect = (noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+              let duration: Double = noti.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else {
+            return
+        }
+
+        let keyboardHeight: CGFloat = keyboardFrame.height
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
+
+            UIView.animate(withDuration: duration) {
+                self.toolbarBottomConstraint?.update(offset: -keyboardHeight)
+            }
+        }
+    }
+
+    @objc
+    private func keyboardWillHide(_ noti: Notification) {
+        guard let duration: Double = noti.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else {
+            return
+        }
+
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
+
+            UIView.animate(withDuration: duration) {
+                self.toolbarBottomConstraint?.update(offset: 0)
+            }
+        }
     }
 }
 
@@ -72,7 +121,8 @@ extension WriteViewController {
         toolbar.snp.makeConstraints {
             $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leadingMargin)
             $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailingMargin)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin)
+//            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin)
+            self.toolbarBottomConstraint = $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin).constraint
         }
 
         let flexibleSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)

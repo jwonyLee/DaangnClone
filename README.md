@@ -35,8 +35,16 @@
 
 - 다시 만든다면 `TableView`를 이용하지 않고, `StackView`로 구성할 거 같습니다.
 - `WriteViewController`가 너무 많은 일을 하고 있습니다. `RxSwift`를 사용했지만, 제대로 이점을 살리지 못했습니다. 계속 진행한다면, `RxSwift`를 걷어내거나, 로직을 `ViewModel`로 분리하려 합니다.
-- 키보드가 올라올 때, 툴 바가 가려지는 문제를 해결하지 못했습니다. 
+- 키보드가 올라올 때, 툴 바가 가려지는 문제를 해결하지 못했습니다.
 - 진행 속도가 더뎌서 요구사항 분석과 달리 전부 구현하지 못했습니다.
+
+## 추가 구현
+- 키보드가 올라올 때, 툴 바가 가려지는 문제를 해결했습니다.
+  - iOS 15+
+    - `view.keyboardLayoutGuide.topAnchor`로 오토 레이아웃을 걸면 해결된다.
+  - ~ iOS 14
+    - `NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_ :)), name: UIResponder.keyboardWillShowNotification, object: nil)`로 알림을 받아서 설정해야 한다. 
+    - `toolbar`의 `bottomConstraint.offset(-keyboardFrame.height)`를 업데이트 하는 식으로 해결했습니다.
 
 ## 요구사항 분석
 
