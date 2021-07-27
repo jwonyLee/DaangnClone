@@ -44,6 +44,8 @@ class PriceTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         self.selectionStyle = .none
+        self.contentView.isUserInteractionEnabled = false
+
         configureViews()
         configurePriceTextField()
         configureSuggestionButton()
@@ -52,6 +54,16 @@ class PriceTableViewCell: UITableViewCell {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        if selected {
+            priceTextField.becomeFirstResponder()
+        } else {
+            priceTextField.resignFirstResponder()
+        }
     }
 }
 
@@ -103,6 +115,7 @@ extension PriceTableViewCell {
         suggestionButton.rx.tap
             .bind(with: self) { strongSelf, _ in
                 strongSelf.suggestionButton.isSelected.toggle()
+                print("tapped")
             }
             .disposed(by: disposeBag)
     }
